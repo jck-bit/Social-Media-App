@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { connect } from "@/utils/connection";
+import bcrypt from "bcrypt"
 import { ResponseFuncs } from "@/utils/types";
 
 const handler = async (req:NextApiRequest, res:NextApiResponse) => {
@@ -18,6 +19,31 @@ const handler = async (req:NextApiRequest, res:NextApiResponse) => {
                 return res.status(500).json({error})
             }
         },
+        POST:async (req:NextApiRequest, res:NextApiResponse) => {
+            try {
+                if (!req.body.username || !req.body.email || !req.body.password) {
+                    return res.status(400).json({ error: "username, email and password are required" });
+                }
+        
+                const { User } = await connect();
+        
+                const { username, email, password } = req.body;
+                const salt = await bcrypt.genSalt();
+                const passwordHash = await bcrypt.hash(password, salt);
+        
+                const newUser = new User({
+                    username,
+                    email,
+                    password:passwordHash
+                });
+        
+                const savedUser = await newUser.save();
+                res.status(201).json(savedUser);
+        
+            } catch (error) {
+                res.status(500).json({ error });
+            }
+        }
     }
 
     const response = handleCase[method]
