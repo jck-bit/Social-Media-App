@@ -18,7 +18,7 @@ const Sidebar = () => {
 
      <Third>
        <p className='p-tag'>54k Followers</p>
-       
+
        <p>217 Following</p>
       </Third>
      
@@ -27,23 +27,17 @@ const Sidebar = () => {
       </Fourth>
 
      <Major>
-     <Fifth>
-        <Feedback/>
-        <span className='tag'>Feed</span>
-      </Fifth> 
-       <Fifth>
-        <Settings/>
-        <span className='tag'>Settings</span>
-      </Fifth> 
-       <Fifth>
-     </Fifth>
-     
-
+        <Fifth>
+            <Feedback/>
+            <span className='tag'>Feed</span>
+        </Fifth> 
+        <Fifth>
+            <Settings/>
+            <span className='tag'>Settings</span>
+        </Fifth> 
+        <Fifth>
+        </Fifth>
      </Major>
-    
-    
-                   
-   
   </Right>
   )
 }
