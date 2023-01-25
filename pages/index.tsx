@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Sidebar from '@/components/Sidebar'
 import { Container } from '@/styles/container.styled'
+import {signIn} from "next-auth/react"
 
 export default function Home() {
   return (
@@ -12,9 +13,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-       <Container>
+       {/* <Container>
          <Sidebar/>
-       </Container>
+       </Container> */}
+       <button onClick={() =>{
+        signIn()
+       }}>Login</button>
     </>
   )
 }
