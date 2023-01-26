@@ -1,45 +1,47 @@
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
-import { useState,FormEventHandler } from "react";
+import { FormEventHandler, useState } from "react";
 
 interface Props {}
 
-const SignIn:NextPage = (props):JSX.Element => {
-  const [userInfo, setUserInfo] = useState({email: '',password:""})
-  const handleSubmit:FormEventHandler<HTMLFormElement> = async(e) =>{
-    e.preventDefault()
+const SignIn: NextPage = (props): JSX.Element => {
+  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    // validate your userinfo
+    e.preventDefault();
 
-    const res = await  signIn('credentials', {
+    const res = await signIn("credentials", {
       email: userInfo.email,
-      password:userInfo.password,
-      redirect:false
-    })
-    console.log(res)
-  }
-  return (
-    <>
-    <h1>Login</h1>
-    <form onSubmit={handleSubmit}>
-        <input 
-          type="email" 
-          placeholder="email" 
-          value={userInfo.email}
-          onChange={({target}) =>
-          setUserInfo({...userInfo,email:target.value})
-        }
-          />
-        <input 
-         type="password" 
-         placeholder="*****" 
-         value={userInfo.password}
-         onChange={({target}) =>
-          setUserInfo({...userInfo,password:target.value})
-        }
-         />
-        <input type="submit"  value="login"/>
-    </form>
-    </>
-  )
-}
+      password: userInfo.password,
+      redirect: false,
+    });
 
-export default SignIn
+    console.log(res);
+  };
+  return (
+    <div className="sign-in-form">
+      <form onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <input
+          value={userInfo.email}
+          onChange={({ target }) =>
+            setUserInfo({ ...userInfo, email: target.value })
+          }
+          type="email"
+          placeholder="john@email.com"
+        />
+        <input
+          value={userInfo.password}
+          onChange={({ target }) =>
+            setUserInfo({ ...userInfo, password: target.value })
+          }
+          type="password"
+          placeholder="********"
+        />
+        <input type="submit" value="Login" />
+      </form>
+    </div>
+  );
+};
+
+export default SignIn;
