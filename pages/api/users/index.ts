@@ -43,9 +43,13 @@ const handler = async (req:NextApiRequest, res:NextApiResponse) => {
                 const newUser = new User({
                     username,
                     email,
-                    password:passwordHash
+                    password:passwordHash,
+                    image: "https://www.shutterstock.com/image-photo/building-background-hd-images-without-600w-1907638465.jpg" // default picture
                 });
         
+                if (req.body.image){ 
+                    newUser.image = req.body.image;
+                }
                 const savedUser = await newUser.save();
                 res.status(201).json(savedUser);
         
