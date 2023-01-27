@@ -1,13 +1,22 @@
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
-import { FormEventHandler, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 import { useRouter } from 'next/router'
-
+import { useSession } from "next-auth/react";
 
 interface Props {}
 
 const SignIn: NextPage = (props): JSX.Element => {
   const router = useRouter()
+  const {data: session}= useSession()
+
+  useEffect(() =>{
+    if (session){
+      router.push("/")
+    }
+  }, [session])
+
+  
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     // validate your userinfo
@@ -23,6 +32,7 @@ const SignIn: NextPage = (props): JSX.Element => {
   };
   return (
     <div className="sign-in-form">
+      Welcome
       <form onSubmit={handleSubmit}>
         <div className="form-group">
         <label>Email</label>
@@ -62,5 +72,3 @@ const SignIn: NextPage = (props): JSX.Element => {
 };
 
 export default SignIn;
-
-
