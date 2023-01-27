@@ -16,7 +16,8 @@ const authOptions: NextAuthOptions = {
           email: string;
           password: string;
         };
-          const {User} = await connect()
+          const { User } = await connect()
+
           const user = await User.findOne({ email }).lean().exec()
 
           if(!user) {
