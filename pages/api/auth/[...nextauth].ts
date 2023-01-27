@@ -1,5 +1,7 @@
+import { connect } from "@/utils/connection";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from 'bcrypt'
 
 const authOptions: NextAuthOptions = {
   session: {
@@ -14,19 +16,19 @@ const authOptions: NextAuthOptions = {
           email: string;
           password: string;
         };
-        // perform you login logic
-        // find out user from db
-        if (email !== "john@gmail.com" || password !== "1234") {
-          throw new Error("invalid credentials");
-        }
+          const {User} = await connect()
+          const user = await User.findOne({ email }).lean().exec()
 
-        // if everything is fine
-        return {
-          id: "1234",
-          name: "John Doe",
-          email: "john@gmail.com",
-        };
-      },
+          if(!user) {
+            throw new Error("User with That email does not Exist")
+          }
+          const isMatch = await bcrypt.compare(password, user.password)
+          if(!isMatch) {
+            throw new Error("Wrong Password")
+          }
+        return ({user, id:user._id})
+      }
+     
     }),
   ],
   pages: {
