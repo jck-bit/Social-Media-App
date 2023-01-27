@@ -2,10 +2,19 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { connect } from "@/utils/connection";
 import bcrypt from "bcrypt"
 import { ResponseFuncs } from "@/utils/types";
+import { getSession } from "next-auth/react";
 
 const handler = async (req:NextApiRequest, res:NextApiResponse) => {
+
+    const session = await getSession({req})
     const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
 
+    if (!session){
+        res.status(401).json({message:"Unaothorized User"})
+    }
+    else{
+        res.status(200).json({message:"success", session})
+    }
     const handleCase:ResponseFuncs ={
         GET:async(req:NextApiRequest, res:NextApiResponse) =>{
             try{
