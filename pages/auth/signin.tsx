@@ -21,15 +21,22 @@ const SignIn: NextPage = (props): JSX.Element => {
   return (
     <div className="sign-in-form">
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <input
+        <div className="form-group">
+        <label>Email</label>
+        <input 
           value={userInfo.email}
           onChange={({ target }) =>
             setUserInfo({ ...userInfo, email: target.value })
           }
           type="email"
-          placeholder="john@email.com"
+          placeholder="Email"
+          className="form-control"
+          name="email"
+          required
         />
+        </div>
+        <div className="form-group">
+        <label>Password</label>
         <input
           value={userInfo.password}
           onChange={({ target }) =>
@@ -37,8 +44,12 @@ const SignIn: NextPage = (props): JSX.Element => {
           }
           type="password"
           placeholder="********"
+          className="form-control"
+          name="password"
+          required
         />
-        <input type="submit" value="Login" />
+        </div>
+        <input type="submit" value="Login" className="btn btn-primary"/>
       </form>
     </div>
   );
