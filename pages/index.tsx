@@ -1,9 +1,27 @@
 import Head from 'next/head'
 import Sidebar from '@/components/Sidebar'
 import { Container } from '@/styles/container.styled'
-import {signIn} from "next-auth/react"
+import {signIn, getSession, useSession, signOut} from "next-auth/react"
+import { useEffect,useState } from 'react'
 
 export default function Home() {
+  const [loading, setLoading] = useState(true)
+  const {data: session, status} = useSession()
+
+  useEffect(() =>{
+    const securePage =async () => {
+      const session = await getSession()
+      if(!session){
+        signIn()
+      }else{
+        setLoading(false)
+      }
+    }
+    securePage()
+    }, [])
+    if(loading){
+      return <h2> You are not logged in</h2>
+    }
   return (
     <>
       <Head>
@@ -16,9 +34,11 @@ export default function Home() {
        {/* <Container>
          <Sidebar/>
        </Container> */}
-       <button onClick={() =>{
-        signIn()
-       }}>Login</button>
+       <h1>
+       {`you are signed in as ${session?.user?.name}`}
+       </h1>       
+       Welcome
+       <button onClick={() => signOut()}>Sign out</button>
     </>
   )
 }

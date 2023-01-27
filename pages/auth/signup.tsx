@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 interface SignUpData {
     username:string;
@@ -7,8 +8,9 @@ interface SignUpData {
     password:string;
 }
 
-
 const Signup:React.FC = () => {
+    const router = useRouter()
+
     const [formData, setFormData] = useState<SignUpData>({
         username: '',
         email: '',
@@ -69,7 +71,7 @@ const Signup:React.FC = () => {
         />
       </div>
       <div className="signup-button">
-      <input type="submit" value="submit" className="btn btn-primary"/>
+      <input type="submit" value="submit" className="btn btn-primary" onClick={() => router.push('/auth/signin')}/>
       </div>
     </form>
   </div>
