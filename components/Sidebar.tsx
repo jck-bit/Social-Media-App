@@ -1,19 +1,20 @@
 import React from 'react'
-import { Feedback,Settings } from '@material-ui/icons'
+import { Feedback,Settings,  } from '@material-ui/icons'
 import { Right,Logo,Image,Sylvia,Fourth,Third,Fifth,Second,Major } from '@/styles/container.styled'
-
+import { useSession } from 'next-auth/react'
 
 const Sidebar = () => {
+  const {data: session, status} = useSession()
   return (
     <Right>
       <Logo>
          <Image src='/free.jpg' alt=''/>
-         <span className='spanner'>Myngram</span>
+         <span className='spanner'>Social Media</span>
       </Logo> 
 
      <Second>
-        <Sylvia src='./images/logout.png' alt=''/>
-        <p> Nikita </p>
+        <Sylvia src={`${session?.user?.image}`} alt=''/>
+        <p>{session?.user?.name}</p>
      </Second>
 
      <Third>

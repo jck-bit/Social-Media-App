@@ -31,9 +31,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-       {/* <Container>
-         <Sidebar/>
-       </Container> */}
+       <Container>
+          <Sidebar/>
+       </Container>
        <h1>
        {`you are signed in as ${session?.user?.name}`}
        </h1>       
