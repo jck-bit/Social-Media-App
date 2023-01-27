@@ -5,6 +5,7 @@ span{
   margin-left: 20px;
 }
 
+
 .p-tag{
   margin-right: 20px;
 }
@@ -72,4 +73,13 @@ form-group {
   margin-bottom: 0.5rem;
   margin-top: .5rem;
   }
-  
+
+  .signup-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .signup-button a{
+    cursor: pointer;
+    color: #0062cc;
+  }
