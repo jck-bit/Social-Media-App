@@ -1,10 +1,13 @@
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { FormEventHandler, useState } from "react";
+import { useRouter } from 'next/router'
+
 
 interface Props {}
 
 const SignIn: NextPage = (props): JSX.Element => {
+  const router = useRouter()
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     // validate your userinfo
@@ -49,10 +52,15 @@ const SignIn: NextPage = (props): JSX.Element => {
           required
         />
         </div>
-        <input type="submit" value="Login" className="btn btn-primary"/>
+        <div className="signup-button">
+        <a type="button" onClick={() => router.push('/auth/signup')}>Dont have an account?  signup</a>
+        <input type="submit" value="signin" className="btn btn-primary"/>
+        </div>
       </form>
     </div>
   );
 };
 
 export default SignIn;
+
+
