@@ -19,14 +19,16 @@ export const connect = async () => {
             email: { type: String, required: true, unique: true },
             password: { type: String, required: true },
         });
-
+        
         const PostSchema = new mongoose.Schema({
-            userId:{type:String, required:true},
-            username:{type:String, required:true},
-            email:{type:String, required:true},
+            userId:{type:String, required:true, select: true},
+            username:{type:String, required:true, select: true},
+            email:{type:String, required:true, select: true},
+            content:{type:String, required:true, select: true},
             date:{type:Date, default: new Date()},
             likes: { type: Map, of:Boolean },
         }, {timestamps: true})
+
 
         const User = mongoose.models.User || mongoose.model("User", UserSchema);
         const Post = mongoose.models.Post || mongoose.model("Post", PostSchema);
