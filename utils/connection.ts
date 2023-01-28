@@ -20,10 +20,18 @@ export const connect = async () => {
             password: { type: String, required: true },
         });
 
-        const User = mongoose.models.User || mongoose.model("User", UserSchema);
+        const PostSchema = new mongoose.Schema({
+            userId:{type:String, required:true},
+            username:{type:String, required:true},
+            email:{type:String, required:true},
+            date:{type:Date, default: new Date()},
+            likes: { type: Map, of:Boolean },
+        }, {timestamps: true})
 
+        const User = mongoose.models.User || mongoose.model("User", UserSchema);
+        const Post = mongoose.models.Post || mongoose.model("Post", PostSchema);
        
-        return { User, conn };
+        return { User, Post,conn };
     } catch (error) {
         console.error("Error connecting to the database: ", error);
         throw error;

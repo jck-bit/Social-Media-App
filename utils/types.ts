@@ -3,6 +3,7 @@ export interface ResponseFuncs {
     POST?: Function;
     PUT?: Function;
     DELETE?:Function;
+    PATCH?:Function;
 }
 
 export interface User {
