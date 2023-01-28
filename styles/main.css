@@ -1,0 +1,32 @@
+.main_container{
+    padding: 34px;
+    color: #fff;
+}
+
+textarea{
+    color: rgba(255, 255, 255, 0.894);
+    outline: none;
+    background-color: transparent;
+    height: 90px;
+    width: 250px;
+    border-radius: 5px;
+    width: 300px;
+    height: 120px;
+    padding: 10px;
+}
+
+.post_button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create_post_submit{
+    color: #fff;
+    border: none;
+    background-color: rgb(114, 110, 104);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
