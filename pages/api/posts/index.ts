@@ -1,6 +1,5 @@
 import { connect } from "@/utils/connection";
 import {  ResponseFuncs } from "@/utils/types";
-import mongoose, { Document} from "mongoose";
 
 import { NextApiRequest, NextApiResponse } from "next";
 

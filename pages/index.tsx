@@ -3,6 +3,8 @@ import Sidebar from '@/components/Sidebar'
 import { Container } from '@/styles/container.styled'
 import {signIn, getSession, useSession, signOut} from "next-auth/react"
 import { useEffect,useState } from 'react'
+//import Hero from '@/components/Hero'
+import Posts from './widgets/feedposts'
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -20,7 +22,7 @@ export default function Home() {
     securePage()
     }, [])
     if(loading){
-      return <h2> You are not logged in</h2>
+      return <h2> You are Logged out....</h2>
     }
   return (
     <>
@@ -33,6 +35,7 @@ export default function Home() {
 
        <Container>
           <Sidebar/>
+          <Posts/>
        </Container>
        <h1>
        {`you are signed in as ${session?.user?.name}`}

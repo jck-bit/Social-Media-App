@@ -8,7 +8,7 @@ export const Container = styled.div`
   height:52rem;
   margin:50px 200px;
   color:white;
-  background-color:gray;
+  background-color:#333;
   border-radius:1%;
 `
 export const Right =styled.div`
