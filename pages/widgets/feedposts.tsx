@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Post } from '@/utils/types';
+import Person from '@/components/Person';
 
 interface Props {
   posts: Post[];
 }
 
-const Posts: React.FC<Props> = ({ posts }) => {
+const Posts: React.FC<Props> = ({ posts }:Props) => {
   const [data, setData] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -30,12 +31,17 @@ const Posts: React.FC<Props> = ({ posts }) => {
         </div>
       </div>
       <div className="main_posts">
-        {data.map((post: Post) => (
-          <>
-            <h1>{post.content}</h1>
-            <h2>Hello</h2>
-          </>
-        ))}
+        {data.map((post: Post) => {
+            return (
+                <div key={post.id} className="post_content">
+                    <Person username = {post.username}/>
+                    <p>{post.content}</p>
+                    <div className="post_content_bottom">
+                        <span>{post.date}</span>
+                    </div>
+                </div>
+            )
+        })}
       </div>
     </main>
   );

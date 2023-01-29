@@ -34,12 +34,15 @@ const handler =async (req:NextApiRequest, res:NextApiResponse) => {
                     userId,
                     username:user.username,
                     email:user.email,
+                    image:user.image,
                     content,
-                    likes:{}
+                    likes:{},
+                    Date
                 })
                 await newPost.save();
                 const posts = await Post.find().select("*").lean();
                 res.json(posts)
+                
                 res.status(201)
 
             } catch (error) {

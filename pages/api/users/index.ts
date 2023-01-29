@@ -35,8 +35,8 @@ const handler = async (req:NextApiRequest, res:NextApiResponse) => {
                 }
         
                 const { User } = await connect();
-        
-                const { username, email, password } = req.body;
+                
+                const { username, email, password, image } = req.body;
                 const salt = await bcrypt.genSalt();
                 const passwordHash = await bcrypt.hash(password, salt);
         
@@ -44,13 +44,16 @@ const handler = async (req:NextApiRequest, res:NextApiResponse) => {
                     username,
                     email,
                     password:passwordHash,
+                    image
                 });
-        
-                if (req.body.image){ 
-                    newUser.image = "https://www.shutterstock.com/image-photo/building-background-hd-images-without-600w-1907638465.jpg" // default picture
+
+                if (!req.body.image){ 
+                    newUser.image = "https://www.shutterstock.com/image-photo/building-background-hd-images-without-600w-1907638465.jpg" 
+                   
                 }else{
                     newUser.image = req.body.image
                 }
+        
                 const savedUser = await newUser.save();
                 res.status(201).json(savedUser);
         

@@ -5,6 +5,7 @@ import {signIn, getSession, useSession, signOut} from "next-auth/react"
 import { useEffect,useState } from 'react'
 //import Hero from '@/components/Hero'
 import Posts from './widgets/feedposts'
+import Rightbar from '@/components/Rightbar'
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -36,6 +37,7 @@ export default function Home() {
        <Container>
           <Sidebar/>
           <Posts/>
+          <Rightbar/>
        </Container>
        <h1>
        {`you are signed in as ${session?.user?.name}`}

@@ -11,14 +11,15 @@ export interface ResponseFuncs {
 export interface User {
     username: string,
     password:string,
-    email:string
+    email:string;
+    image:string;
 }
 
 export interface Post{
     content: string;
     username:string;
-    likes: {};
-    date: Date;
+    likes: [];
+    date: string;
     userId: string    
-    _id: ObjectId
+    id: string
 }
