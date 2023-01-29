@@ -1,8 +1,13 @@
 .main_container{
     padding: 34px;
     color: #fff;
+    
 }
 
+.input_container{
+    padding: 20px;
+    border-bottom: 1px solid  rgb(114, 110, 104);;
+}
 textarea{
     color: rgba(255, 255, 255, 0.894);
     outline: none;
