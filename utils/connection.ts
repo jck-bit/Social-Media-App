@@ -1,3 +1,5 @@
+
+
 import mongoose from "mongoose";
 
 const { DATABASE_URL } = process.env;
@@ -26,6 +28,7 @@ export const connect = async () => {
       userId: { type: String, required: true, select: true },
       username: { type: String, required: true, select: true },
       email: { type: String, required: true, select: true },
+      userImage: {type: String},
       content: { type: String, required: true, select: true },
       date: {
         type: Date,
@@ -46,4 +49,3 @@ export const connect = async () => {
     throw error;
   }
 };
-

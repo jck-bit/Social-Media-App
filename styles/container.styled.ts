@@ -12,9 +12,11 @@ export const Container = styled.div`
 `
 
 export const Right =styled.div`
+   flex:2
   align-items:center;
   border-right:1px solid  rgb(114, 110, 104);
   padding-top: 30px;
+  position:sticky;
 `
 
 export const Logo =styled.div`
