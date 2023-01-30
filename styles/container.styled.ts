@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width:1020px;
+  width:fit-content;
   padding:20px;
-  position:sticky;
-  display:flex
-  height:52rem;
+  display:flex;
+  height:100%;
   margin:50px 200px;
   color:white;
-  background-color:#333;
+  background-color:black;
   border-radius:1%;
 `
+
 export const Right =styled.div`
   align-items:center;
-  border-right:1px solid white;
+  border-right:1px solid  rgb(114, 110, 104);
   padding-top: 30px;
 `
 

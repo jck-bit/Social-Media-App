@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Person = () => {
+const Person = ({username, image}:any) => {
   return (
-    <div>Person</div>
+    <div className='person_content'>
+      <h1>{username}</h1>
+    </div>
   )
 }
 
