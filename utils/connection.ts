@@ -1,3 +1,5 @@
+
+
 import mongoose from "mongoose";
 
 const { DATABASE_URL } = process.env;
@@ -19,13 +21,14 @@ export const connect = async () => {
       username: { type: String, required: true },
       email: { type: String, required: true, unique: true },
       password: { type: String, required: true },
-      image: { type: String, default: "https://www.shutterstock.com/image-photo/building-background-hd-images-without-600w-1907638465.jpg" },
+      image: { type: String, default: "" },
     });
 
     const PostSchema = new mongoose.Schema({
       userId: { type: String, required: true, select: true },
       username: { type: String, required: true, select: true },
       email: { type: String, required: true, select: true },
+      userImage: {type: String},
       content: { type: String, required: true, select: true },
       date: {
         type: Date,
@@ -46,4 +49,3 @@ export const connect = async () => {
     throw error;
   }
 };
-

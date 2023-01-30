@@ -20,30 +20,30 @@ const handler =async (req:NextApiRequest, res:NextApiResponse) => {
         },
         POST:async (req:NextApiRequest, res:NextApiResponse) => {
             try {
-                if (!req.body.content || !req.body.userId) {
+                if (!req.body.userId ||!req.body.content ) {
                     return res.status(400).json({ error: "All Fields Are required" });
                 }
 
                 const {Post, User} = await connect()
-                const {content, userId} = req.body
+
+                const {content, userId, image } = req.body
                 
                 const user = await User.findById(userId)
                 if(!user) res.status(400).json({message:"user does not exist"})
-
+               
                 const newPost = new Post({
                     userId,
                     username:user.username,
                     email:user.email,
-                    image:user.image,
+                    userImage:user.image,
+                    image,
                     content,
                     likes:{},
-                    Date
                 })
                 await newPost.save();
-                const posts = await Post.find().select("*").lean();
-                res.json(posts)
-                
-                res.status(201)
+                const post = await Post.find();
+                console.log(post)
+                res.status(201).json(post)
 
             } catch (error) {
                 res.status(409).json({error})
