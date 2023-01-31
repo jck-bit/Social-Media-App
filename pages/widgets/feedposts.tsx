@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Post } from '@/utils/types';
-import Person from '@/components/Person';
-import { MoreVert,ThumbDown } from '@material-ui/icons'
+import { MoreVert,ThumbDown, EmojiEmotions, Label, PermMedia, Room } from '@material-ui/icons'
+import Share from '@/components/Share';
 
 interface Props {
   posts: Post[];
@@ -22,6 +22,8 @@ const Posts: React.FC<Props> = ({ posts }:Props) => {
   }, []);
 
   return (
+    <div className='post_section'>
+    <Share />
     <div className="post">
       {data.map((post) =>{
         return(
@@ -59,6 +61,7 @@ const Posts: React.FC<Props> = ({ posts }:Props) => {
   </div>
         )
       })}
+</div>
 </div>
   );
 };
