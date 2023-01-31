@@ -26,9 +26,9 @@ I am actively working 🥱 to implement these features and provide a seamless ex
 2.  Set the `DATABASE_URL` environment variable with your MongoDB URL 🔗
 
 3.  Run the following command to start the development server:
-
-    npm run dev
-
+```
+ npm run dev
+```
 ## Contribution 🤝
 
 Feel free to contribute to the development of this app by reporting bugs 🐞, suggesting new features 💡, or submitting code improvements.
