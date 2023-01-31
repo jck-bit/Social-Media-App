@@ -27,7 +27,7 @@ I am actively working 🥱 to implement these features and provide a seamless ex
 
 3.  Run the following command to start the development server:
 ```
- npm run dev
+    npm run dev
 ```
 ## Contribution 🤝
 
