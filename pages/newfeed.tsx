@@ -1,43 +1,34 @@
-import { Post } from "@/utils/types";
 import { MoreVert } from '@material-ui/icons'
-import Share from "@/components/Share";
 
-interface Props{
-    data: Post[]
+interface DATA{
+    username:string;
+    content:string;
+    userImage:string
 }
 
-const Post= ({data}:Props) => {
+const NewFeed = ({username, content, userImage}:DATA) => {
     
     return (
-      <div className='post_section'>
-      <Share />
-      <div className="post">
       <>
-       {data.map((post) =>{
-          return(
           <div className="postWrapper">
           <div className="postTop">
             <div className="postLeft">
-                <img  className="postProfileImg"src={post.userImage} alt="" />
-                <span className="postUsername">{post.username}</span>
+                <img  className="postProfileImg"src={userImage} alt="" />
+                <span className="postUsername">{username}</span>
             </div>
             <div className="postRight">
                 <MoreVert className="myn"/>
             </div>
         </div>
         <div className="postCenter">
-          <div className="postText">{post.content}</div>
+          <div className="postText">{content}</div>
              </div>
                <div className="postBottom">
                <div className="postBottomLeft">
           </div>          
         </div>
       </div>
-          )
-       })}
        </>
-       </div>
-</div>
       
     )
   }
@@ -51,4 +42,4 @@ const Post= ({data}:Props) => {
   }
   
 
-export default Post
+export default NewFeed
