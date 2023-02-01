@@ -27,10 +27,18 @@
 .searchInput{
     border: none;
     width: 100%;
-    width: none;
     background-color: transparent;
     color: #fff;
     
+}
+
+textarea{
+    border: none;
+    overflow: hidden;
+    width: 100%;
+    width: none;
+    background-color: transparent;
+    color: #fff;
 }
 
 .searchInput:focus{
