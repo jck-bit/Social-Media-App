@@ -1,4 +1,4 @@
-import { PermMedia,} from '@material-ui/icons'
+import { GrGallery} from 'react-icons/gr'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -38,7 +38,7 @@ const Share = () => {
                 <div className="shareBottom">
                     <div className="shareOptions">
                         <div className="shareOption">
-                            <PermMedia htmlColor="tomato" className="shareIcon"/>
+                            <GrGallery  className="shareIcon"/>
                             <span className="shareOptionText">Photo or video</span>
                         </div>
                     </div>

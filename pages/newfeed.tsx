@@ -1,4 +1,5 @@
-import { MoreVert } from '@material-ui/icons'
+import {FiMoreVertical} from 'react-icons/fi'
+
 import Image from 'next/image';
 
 interface DATA{
@@ -19,7 +20,7 @@ const NewFeed = ({username, content, userImage, date}:DATA) => {
                 <span className="postUsername">{username}</span>
             </div>
             <div className="postRight">
-                <MoreVert className="myn"/>
+                <FiMoreVertical className="myn"/>
             </div>
         </div>
         <div className="postCenter">
