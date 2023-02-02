@@ -1,7 +1,9 @@
-import { EmojiEmotions, Label, PermMedia, Room } from '@material-ui/icons'
+import { PermMedia,} from '@material-ui/icons'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 import React, { useState } from 'react'
+
 
 const Share = () => {
     const [content, setContent] = useState('')
@@ -17,12 +19,14 @@ const Share = () => {
         } catch (error) {
             
         }
+
+        setContent("")
     }
     return (
         <div className="share">
             <div className="shareWrapper">
                 <div className="shareTop">
-                    <img className="shareProfileImg" src={session?.user?.image} alt="" />
+                <Image className="shareProfileImg" src={session?.user?.image as string} alt=""  width={50} height={50}/>
                     <form action="" className='form_input' onSubmit={handleSubmit}>
                         <textarea
                          placeholder= {`what is on your Mind ${session?.user?.name} ?`} 

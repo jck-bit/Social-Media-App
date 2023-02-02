@@ -4,9 +4,7 @@ import { FormEventHandler, useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 import { useSession } from "next-auth/react";
 
-interface Props {}
-
-const SignIn: NextPage = (props): JSX.Element => {
+const SignIn: NextPage = () => {
   const router = useRouter()
   const {data: session}= useSession()
 
@@ -14,7 +12,7 @@ const SignIn: NextPage = (props): JSX.Element => {
     if (session){
       router.push("/")
     }
-  }, [session])
+  }, [session, router])
 
   
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });

@@ -1,4 +1,5 @@
 import { MoreVert } from '@material-ui/icons'
+import Image from 'next/image';
 
 interface DATA{
     username:string;
@@ -10,11 +11,11 @@ interface DATA{
 const NewFeed = ({username, content, userImage, date}:DATA) => {
     
     return (
-      <>
+  
           <div className="postWrapper">
           <div className="postTop">
             <div className="postLeft">
-                <img  className="postProfileImg"src={userImage} alt="" />
+            <Image  className="postProfileImg"src={userImage} alt="" width={50} height={50}/>
                 <span className="postUsername">{username}</span>
             </div>
             <div className="postRight">
@@ -28,7 +29,7 @@ const NewFeed = ({username, content, userImage, date}:DATA) => {
                 <div className="postBottomLeft">{date}</div>     
               </div>
       </div>
-       </>
+       
       
     )
   }

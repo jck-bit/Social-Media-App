@@ -6,7 +6,7 @@ import {
 
   import { useSession } from 'next-auth/react'
   import { signOut } from 'next-auth/react'
-
+import Image from 'next/image'
 
 const Sidebar = () => {
   const {data: session, status} = useSession()
@@ -15,11 +15,11 @@ const Sidebar = () => {
           <div className="sidebarWrapper">
               <ul className="sidebarList">
                   <div className="Logo">
-                    <img src="/free.jpg" alt="" className='Image-logo'/>
+                  <Image src="/free.jpg" alt="" className='Image-logo' width={32} height={32}/>
                     <span className='spanner'>Social Media</span>
                   </div>
                   <div className="second">
-                    <img src={session?.user?.image} alt="" className='sylvia' />
+                  <Image src={session?.user?.image as string} alt="" className='sylvia'  width={50} height={50}/>
                     <p>{session?.user?.name}</p>
                   </div>
                   <li className="sidebarListitems">
