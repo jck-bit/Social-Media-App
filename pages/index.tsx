@@ -54,7 +54,7 @@ function Home({data}:Props) {
 }
 
 export async function getServerSideProps(){
-  const res = await fetch('http://localhost:3000/api/posts')
+  const res = await fetch(process.env.API_URL as string)
   const data = await res.json()
   
   return {
