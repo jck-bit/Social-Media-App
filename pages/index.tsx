@@ -7,6 +7,7 @@ import Rightbar from '@/pages/widgets/Rightbar'
 import NewFeed from './newfeed'
 import Share from '@/components/Share'
 import { Post } from '@/utils/types'
+import Loader from './loader'
 
 interface Props{
   data: Post[]
@@ -27,7 +28,7 @@ function Home({data}:Props) {
     securePage()
     }, [])
     if(loading){
-      return <h2> You are Logged out....</h2>
+      return <Loader/>
     }
     return (
     
@@ -35,11 +36,11 @@ function Home({data}:Props) {
       <Container>
         <Sidebar/>
       <div className='post_section'>
-      <Share />
+      <Share/>
       <div className="post">
-       {data.map((post) =>{
+       {data?.map((post) =>{
           return(
-            <NewFeed username={post.username} content={post.content} userImage={post.userImage}/>
+            <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date}/>
           )
        })}
        </div>

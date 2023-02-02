@@ -3,10 +3,11 @@ import { MoreVert } from '@material-ui/icons'
 interface DATA{
     username:string;
     content:string;
-    userImage:string
+    userImage:string;
+    date:string;
 }
 
-const NewFeed = ({username, content, userImage}:DATA) => {
+const NewFeed = ({username, content, userImage, date}:DATA) => {
     
     return (
       <>
@@ -24,9 +25,8 @@ const NewFeed = ({username, content, userImage}:DATA) => {
           <div className="postText">{content}</div>
              </div>
                <div className="postBottom">
-               <div className="postBottomLeft">
-          </div>          
-        </div>
+                <div className="postBottomLeft">{date}</div>     
+              </div>
       </div>
        </>
       
