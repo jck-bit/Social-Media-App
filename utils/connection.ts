@@ -8,12 +8,7 @@ export const connect = async () => {
   }
 
   try {
-    const conn = await mongoose.connect(DATABASE_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
-
+    const conn = await mongoose.connect(DATABASE_URL);
     const today = Date.now()
 
     const f = new Intl.DateTimeFormat("en-us", {

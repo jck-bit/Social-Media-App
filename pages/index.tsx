@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Sidebar from '@/components/Sidebar'
 import { Container } from '@/styles/container.styled'
-import {signIn, getSession, useSession, signOut} from "next-auth/react"
+import {signIn, getSession} from "next-auth/react"
 import { useEffect,useState } from 'react'
 import Rightbar from '@/pages/widgets/Rightbar'
 import NewFeed from './newfeed'
@@ -40,7 +40,9 @@ function Home({data}:Props) {
       <div className="post">
        {data?.map((post) =>{
           return(
-            <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date}/>
+            <div key={post.id}>
+              <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date} />
+            </div>
           )
        })}
        </div>
