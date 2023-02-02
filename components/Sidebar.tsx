@@ -1,15 +1,13 @@
-import { 
-  Chat,
-  Fireplace,
-  RssFeed
-  } from '@material-ui/icons'
+import {MdFeed}  from 'react-icons/md'
+import {BsFillChatFill}  from 'react-icons/bs'
+import {FaUserFriends}  from 'react-icons/fa'
 
   import { useSession } from 'next-auth/react'
   import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 
 const Sidebar = () => {
-  const {data: session, status} = useSession()
+  const {data: session} = useSession()
   return (
       <div className ="sidebar">
           <div className="sidebarWrapper">
@@ -23,15 +21,15 @@ const Sidebar = () => {
                     <p>{session?.user?.name}</p>
                   </div>
                   <li className="sidebarListitems">
-                      <RssFeed className="sidebarIcon"/>
+                      <MdFeed className="sidebarIcon"/>
                       <span className="sidebarListItemText">Feeds</span>
                   </li>
                   <li className="sidebarListitems">
-                      <Chat className="sidebarIcon"/>
+                      <BsFillChatFill className="sidebarIcon"/>
                       <span className="sidebarListItemText">Chats</span>
                   </li>
                   <li className="sidebarListitems">
-                      <Fireplace className="sidebarIcon"/>
+                      <FaUserFriends className="sidebarIcon"/>
                       <span className="sidebarListItemText">Friends</span>
                   </li> 
               </ul>
