@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 
 export interface ResponseFuncs {
     GET?: Function
@@ -19,6 +20,7 @@ export interface Post{
     username:string;
     likes: [];
     userId: string    
-    id: string
+    _id: ObjectId
     userImage:string
+    date:string;
 }

@@ -11,9 +11,9 @@ const handler =async (req:NextApiRequest, res:NextApiResponse) => {
             try {
                 const {Post} = await connect()
 
-                const posts = await Post.find().lean()
+                const posts = await Post.find().sort({createdAt :'ascending'}).select('*').lean()
                 res.json(posts)
-                console.log(posts)
+                // console.log(posts)
             } catch (error) {
                 res.status(500).json({error})
             }

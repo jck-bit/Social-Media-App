@@ -28,7 +28,7 @@ const authOptions: NextAuthOptions = {
             throw new Error("Wrong Password")
           }
           console.log({user, id:user._id, name:user.username, image:user.image})
-        return ({user, id:user._id, name:user.username, image:user.image})
+        return {user, id:user._id, name:user.username, image:user.image}
       }
      
     }),
@@ -38,6 +38,19 @@ const authOptions: NextAuthOptions = {
     // error: '/auth/error',
     // signOut: '/auth/signout'
   },
-};
-
+    callbacks: {
+      session: async ({ session, token }) => {
+        if (session?.user) {
+          session.user.id = token.uid;
+        }
+        return session;
+      },
+      jwt: async ({ user, token }) => {
+        if (user) {
+          token.uid = user.id;
+        }
+        return token;
+      }, 
+    }
+}
 export default NextAuth(authOptions);
