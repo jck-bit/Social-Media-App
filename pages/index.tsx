@@ -13,10 +13,11 @@ import Loader from './loader'
 function Home() {
   const [loading, setLoading] = useState(true)
  const [data, setData] = useState<Post[]>([])
+
  
  useEffect(() =>{
   const fetchData =async () => {
-   const response = await fetch('https://social-media-app-jck-bit.vercel.app/api/posts')
+   const response = await fetch('http://localhost:3000/api/posts')
    const responseData = await response.json()
    setData(responseData)
   }
@@ -39,7 +40,7 @@ function Home() {
     if(loading){
       return <Loader/>
     }
-    return (  
+    return (
     
 <>
       <Container>
@@ -47,7 +48,7 @@ function Home() {
       <div className='post_section'>
       <Share/>
       <div className="post">
-       {data && data.map((post) =>{
+       {data.map((post) =>{
           return(
             <div key={post.id}>
               <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date} />
