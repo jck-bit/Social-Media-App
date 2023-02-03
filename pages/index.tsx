@@ -9,12 +9,22 @@ import Share from '@/components/Share'
 import { Post } from '@/utils/types'
 import Loader from './loader'
 
-interface Props{
-  data: Post[]
-}
 
-function Home({data}:Props) {
+function Home() {
   const [loading, setLoading] = useState(true)
+ const [data, setData] = useState<Post[]>([])
+
+ 
+ useEffect(() =>{
+  const fetchData =async () => {
+   const response = await fetch('http://localhost:3000/api/posts')
+   const responseData = await response.json()
+   setData(responseData)
+  }
+  
+  fetchData()
+},[])
+
 
   useEffect(() =>{
     const securePage =async () => {
@@ -31,6 +41,8 @@ function Home({data}:Props) {
       return <Loader/>
     }
     return (
+
+  
     
 <>
       <Container>
@@ -38,7 +50,7 @@ function Home({data}:Props) {
       <div className='post_section'>
       <Share/>
       <div className="post">
-       {data?.map((post) =>{
+       {data.map((post) =>{
           return(
             <div key={post.id}>
               <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date} />
@@ -53,12 +65,5 @@ function Home({data}:Props) {
 
 }
 
-export async function getServerSideProps(){
-  const res = await fetch(process.env.API_URL as string)
-  const data = await res.json()
-  
-  return {
-    props: {data}}
-}
 
 export default Home
