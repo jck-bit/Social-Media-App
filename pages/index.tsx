@@ -13,7 +13,6 @@ import Loader from './loader'
 function Home() {
   const [loading, setLoading] = useState(true)
  const [data, setData] = useState<Post[]>([])
-
  
  useEffect(() =>{
   const fetchData =async () => {
@@ -40,9 +39,7 @@ function Home() {
     if(loading){
       return <Loader/>
     }
-    return (
-
-  
+    return (  
     
 <>
       <Container>
@@ -50,7 +47,7 @@ function Home() {
       <div className='post_section'>
       <Share/>
       <div className="post">
-       {data.map((post) =>{
+       {data && data.map((post) =>{
           return(
             <div key={post.id}>
               <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date} />
