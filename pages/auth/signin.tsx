@@ -1,10 +1,9 @@
-import { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { FormEventHandler, useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 import { useSession } from "next-auth/react";
 
-const SignIn: NextPage = () => {
+const SignIn = () => {
   const router = useRouter()
   const {data: session}= useSession()
 
@@ -14,7 +13,6 @@ const SignIn: NextPage = () => {
     }
   }, [session, router])
 
-  
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
