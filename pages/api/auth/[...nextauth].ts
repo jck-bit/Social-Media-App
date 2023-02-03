@@ -30,7 +30,7 @@ const authOptions: NextAuthOptions = {
      
     }),
   ],
-  secret:process.env.SECRET,
+  secret:"anystring",
 
   pages: {
     signIn: "/auth/signin",
