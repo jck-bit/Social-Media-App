@@ -1,12 +1,14 @@
 import { connect } from "@/utils/connection";
 import {  ResponseFuncs } from "@/utils/types";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
+import Corshandler from "../whoami";
+
 
 const handler =async (req:NextApiRequest, res:NextApiResponse) => {
+    
+    await Corshandler(req, res)
     const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
-
-
+   
     const handleCase:ResponseFuncs ={
         GET:async (req:NextApiRequest, res:NextApiResponse) => {
             try {
