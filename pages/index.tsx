@@ -9,15 +9,13 @@ import Share from '@/components/Share'
 import { Post } from '@/utils/types'
 import Loader from './loader'
 
-
 function Home() {
   const [loading, setLoading] = useState(true)
- const [data, setData] = useState<Post[]>([])
-
+  const [data, setData] = useState<Post[]>([])
  
  useEffect(() =>{
   const fetchData =async () => {
-   const response = await fetch('http://localhost:3000/api/posts')
+   const response = await fetch('https://social-media-8nygfovlg-jck-bit.vercel.app/api/posts')
    const responseData = await response.json()
    setData(responseData)
   }
