@@ -26,20 +26,20 @@ function Home() {
 },[])
 
 
-  useEffect(() =>{
-    const securePage =async () => {
-      const session = await getSession()
-      if(!session){
-        signIn()
-      }else{
-        setLoading(false)
-      }
-    }
-    securePage()
-    }, [])
-    if(loading){
-      return <Loader/>
-    }
+  // useEffect(() =>{
+  //   const securePage =async () => {
+  //     const session = await getSession()
+  //     if(!session){
+  //       signIn()
+  //     }else{
+  //       setLoading(false)
+  //     }
+  //   }
+  //   securePage()
+  //   }, [])
+  //   if(loading){
+  //     return <Loader/>
+  //   }
     return (
     
 <>
