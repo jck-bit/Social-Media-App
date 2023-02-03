@@ -1,10 +1,11 @@
 import { connect } from "@/utils/connection";
 import {  ResponseFuncs } from "@/utils/types";
-
 import { NextApiRequest, NextApiResponse } from "next";
+import { getSession } from "next-auth/react";
 
 const handler =async (req:NextApiRequest, res:NextApiResponse) => {
     const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
+
 
     const handleCase:ResponseFuncs ={
         GET:async (req:NextApiRequest, res:NextApiResponse) => {

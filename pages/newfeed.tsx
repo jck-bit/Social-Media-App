@@ -35,13 +35,4 @@ const NewFeed = ({username, content, userImage, date}:DATA) => {
     )
   }
 
-  export async function getServerSideProps(){
-    const res = await fetch(process.env.API_URL as string)
-    const data = await res.json()
-    
-    return {
-      props: {data}}
-  }
-  
-
 export default NewFeed
