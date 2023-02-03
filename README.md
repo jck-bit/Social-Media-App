@@ -1,6 +1,6 @@
 # Social Media App 💬
 
-Welcome to the social media app! 🎉 This app was created to connect people and share their thoughts, ideas, and experiences. 🤝
+Welcome to the social media app! 🎉 This app was created to connect people and share their thoughts, ideas, and experiences. 🤝, to open the production deployment to look at the project, 
 
 ## Features 🚀
 
