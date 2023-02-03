@@ -11,7 +11,7 @@ const SignIn = () => {
     if (session){
       router.push("/")
     }
-  }, [session, router])
+  })
 
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
