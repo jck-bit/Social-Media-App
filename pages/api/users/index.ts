@@ -2,9 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { connect } from "@/utils/connection";
 import bcrypt from "bcrypt"
 import { ResponseFuncs } from "@/utils/types";
+import Corshandler from "../whoami";
 
 const handler = async (req:NextApiRequest, res:NextApiResponse) => {
-
+    await Corshandler(req, res)
     const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
 
     const handleCase:ResponseFuncs ={
