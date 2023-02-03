@@ -4,9 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from 'bcrypt'
 
 const authOptions: NextAuthOptions = {
-  session: {
-    strategy: "jwt",
-  },
   providers: [
     CredentialsProvider({
       type: "credentials",
@@ -35,8 +32,6 @@ const authOptions: NextAuthOptions = {
   ],
   pages: {
     signIn: "/auth/signin",
-    // error: '/auth/error',
-    // signOut: '/auth/signout'
   },
     callbacks: {
       session: async ({ session, token }) => {
@@ -51,6 +46,10 @@ const authOptions: NextAuthOptions = {
         }
         return token;
       }, 
-    }
+      
+    },
+    session: {
+      strategy: "jwt",
+    },
 }
 export default NextAuth(authOptions);
