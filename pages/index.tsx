@@ -15,7 +15,7 @@ function Home() {
  
  useEffect(() =>{
   const fetchData =async () => {
-   const response = await fetch('https://social-media-8nygfovlg-jck-bit.vercel.app/api/posts')
+   const response = await fetch('http://localhost:3000/api/posts')
    const responseData = await response.json()
    setData(responseData)
   }
