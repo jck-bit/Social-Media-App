@@ -2,10 +2,18 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { connect } from "@/utils/connection";
 import bcrypt from "bcrypt"
 import { ResponseFuncs } from "@/utils/types";
-import Corshandler from "../whoami";
+import NextCors from "nextjs-cors";
+
+const corsHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+    await NextCors(req, res, {
+       methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+       origin: '*',
+       optionsSuccessStatus: 200,
+    });
+ }
 
 const handler = async (req:NextApiRequest, res:NextApiResponse) => {
-    await Corshandler(req, res)
+    await corsHandler(req, res)
     const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
 
     const handleCase:ResponseFuncs ={
