@@ -20,7 +20,7 @@ const Signup:React.FC = () => {
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
         try {
-            await axios.post('http://localhost:3000/api/users', formData)
+            await axios.post('https://social-media-8nygfovlg-jck-bit.vercel.app/api/users', formData)
             console.log("Sign up successfull")
         } catch (error) {
             console.error(error)
