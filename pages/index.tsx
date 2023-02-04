@@ -38,9 +38,9 @@ function Home() {
     if(loading){
       return <Loader/>
     }
+
     return (
-    
-<>
+    <>
       <Container>
         <Sidebar/>
       <div className='post_section'>
