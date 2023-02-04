@@ -27,11 +27,11 @@ const Signup:React.FC = () => {
                 hideProgressBar: false,
                 closeOnClick:true,
             })
-        } catch (error) {
+        } catch (error:any) {
             console.error(error)
-            toast.error("Sign up failed. Email already exists.",{
+            toast.error(`${error.response.data.message}`,{
                 hideProgressBar:false,
-                draggable:true
+                draggable:true,
             })
         }
     }

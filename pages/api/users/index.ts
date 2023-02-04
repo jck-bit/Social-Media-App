@@ -34,10 +34,14 @@ const handler = async (req:NextApiRequest, res:NextApiResponse) => {
                 if (!req.body.username || !req.body.email || !req.body.password) {
                     return res.status(400).json({ error: "username, email and password are required" });
                 }
-        
                 const { User } = await connect();
                 
                 const { username, email, password, image } = req.body;
+
+                const user = await User.findOne({email}).lean()
+                if(user) return res.status(400).json({message:"user with that email exists"})
+                console.log('user exists')
+
                 const salt = await bcrypt.genSalt();
                 const passwordHash = await bcrypt.hash(password, salt);
         
