@@ -83,11 +83,12 @@ form-group {
   }
 
   .signup-button a{
+    margin-right: 10px;
     cursor: pointer;
     color: #0062cc;
   }
   .sign_up_tag{
+    width: 100%;
     font-size: small;
     font-weight: bold;
-    margin-right: 50px;
   }
