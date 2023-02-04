@@ -6,14 +6,20 @@ span{
   margin-left: 20px;
 }
 
-
 .p-tag{
-  margin-right: 20px;
+  align-items: center;
+}
+
+.sign-in-form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 form-group {
   margin-bottom: 1rem;
-  }
+}
   
   .form-control {
   display: block;
@@ -64,6 +70,7 @@ form-group {
   }
   
   .btn-primary:hover {
+  cursor: pointer;
   color: #fff;
   background-color: #0069d9;
   border-color: #0062cc;
@@ -75,12 +82,12 @@ form-group {
   margin-top: .5rem;
   }
 
-  .signup-button{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
   .signup-button a{
     cursor: pointer;
     color: #0062cc;
+  }
+  .sign_up_tag{
+    font-size: small;
+    font-weight: bold;
+    margin-right: 50px;
   }
