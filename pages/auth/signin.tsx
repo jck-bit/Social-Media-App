@@ -2,8 +2,8 @@ import { signIn } from "next-auth/react";
 import { FormEventHandler, useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 import { useSession } from "next-auth/react";
-import Loader from "../loader";
 import Load from "@/components/Load";
+import { toast } from 'react-toastify';
 
 const SignIn = () => {
   const router = useRouter()
@@ -21,6 +21,7 @@ const SignIn = () => {
     e.preventDefault();
     setLoading(true);
 
+
     const res = await signIn("credentials", {
       email: userInfo.email,
       password: userInfo.password,
@@ -28,6 +29,12 @@ const SignIn = () => {
     });
     console.log(res);
     setLoading(false)
+
+    if (!res?.ok) {
+      toast.error("Incorrect Credentials");
+    }else{
+      toast.success("signing in...")
+    }
   };
   return (
     <div className="sign-in-form">

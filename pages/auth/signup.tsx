@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 interface SignUpData {
     username:string;
@@ -21,9 +22,17 @@ const Signup:React.FC = () => {
         e.preventDefault();
         try {
             await axios.post('http://localhost:3000/api/users', formData)
-            console.log("Sign up successfull")
+            router.push('/auth/signin');
+            toast.success("signup successfull",{
+                hideProgressBar: false,
+                closeOnClick:true,
+            })
         } catch (error) {
             console.error(error)
+            toast.error("Sign up failed. Email already exists.",{
+                hideProgressBar:false,
+                draggable:true
+            })
         }
     }
 
@@ -71,7 +80,7 @@ const Signup:React.FC = () => {
         />
       </div>
       <div className="signup-button">
-      <input type="submit" value="submit" className="btn btn-primary" onClick={() => router.push('/auth/signin')}/>
+      <input type="submit" value="submit" className="btn btn-primary"/>
       </div>
     </form>
   </div>
