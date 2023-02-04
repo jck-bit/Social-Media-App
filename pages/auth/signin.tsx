@@ -33,7 +33,9 @@ const SignIn = () => {
     if (!res?.ok) {
       toast.error("Incorrect Credentials");
     }else{
-      toast.success("signing in...")
+      toast.success("signing in...",{
+        autoClose:1500
+      })
     }
   };
   return (
