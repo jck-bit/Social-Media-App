@@ -1,5 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 body{
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Alata', sans-serif;
   color: black;
 }
 span{
