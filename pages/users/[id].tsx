@@ -1,32 +1,47 @@
+import { useRouter } from 'next/router'
 import axios from 'axios'
-import { getSession } from 'next-auth/react'
 import { User } from '@/utils/types'
 
-interface Props {
-  user: User
+interface UserProps {
+  user: User | null,
 }
 
-const UserProfile = ({ user }: Props) => {
+const User = ({ user }: UserProps) => {
+  const router = useRouter()
+  const { id } = router.query
+
   return (
     <div>
-      <h1>{user.username}</h1>
+      {user ? (
+        <>
+          <h1>Username: {user.username}</h1>
+          <img src={user.image} alt={user.username} />
+        </>
+      ) : (
+        <h1>User not found</h1>
+      )}
     </div>
   )
 }
 
-export async function getServerSideProps(ctx:any) {
-  const session = await getSession(ctx)
+export async function getServerSideProps(context: any) {
+  const { id } = context.query
+  let user = null
 
-  if (!session) {
-    return { props: { user: null } }
+  try {
+    const response = await axios.get(
+      `https://social-media-app-kappa.vercel.app/api/users/${id}`
+    )
+    user = response.data
+  } catch (error) {
+    console.error(error)
   }
 
-  const user = await axios.get(`http://localhost:3000/api/users/${session?.user?.id}`)
-    .then(res => res.data)
-
   return {
-    props: { user },
+    props: {
+      user,
+    }
   }
 }
 
-export default UserProfile
+export default User
