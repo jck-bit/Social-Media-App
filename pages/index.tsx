@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { User, Post } from '@/utils/types'
@@ -17,40 +17,43 @@ interface ShowProps {
 const Home = ({ user, posts }: ShowProps) => {
   const router = useRouter()
   const [redirect, setRedirecting] = useState(false)
-  
+
   useEffect(() => {
     if (!user) {
       setRedirecting(true)
       router.push('auth/signin')
+    }
+    if(user){
+      console.log(user.image)
     }
   }, [user, router])
 
   return (
     <div>
       {user ? (
-         <Container>
-         <Sidebar/>
-       <div className='post_section'>
-       <Share/>
-       <div className="post">
-        {posts.map((post) =>{
-           return(
-             <div key={post.id}>
-               <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date} />
-             </div>
-           )
-        })}
-        </div>
-     </div>
-     </Container>
+        <Container>
+          <Sidebar />
+          <div className='post_section'>
+            <Share />
+            <div className="post">
+              {posts.map((post) => {
+                return (
+                  <div key={post.id}>
+                    <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date} id={post.userId}/>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </Container>
       ) : (
-        <>{redirect ? <Loader/> : null}</>
+        <>{redirect ? <Loader /> : null}</>
       )}
     </div>
   )
 }
 
-export async function getServerSideProps(context:any) {
+export async function getServerSideProps(context: any) {
   const session = await getSession(context)
   let user = null
   let posts = []

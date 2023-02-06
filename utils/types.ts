@@ -15,11 +15,11 @@ export interface User {
 }
 
 export interface Post{
-    content: string;
-    username:string;
-    likes: [];
-    userId: string    
-    id: string
-    userImage:string
-    date:string;
+    content?: string;
+    username?:string;
+    likes?: [];
+    userId?: string    
+    id?: string
+    userImage?:string
+    date?:string;
 }

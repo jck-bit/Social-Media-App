@@ -1,22 +1,21 @@
 import {FiMoreVertical} from 'react-icons/fi'
-
+import { Post } from '@/utils/types';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-interface DATA{
-    username:string;
-    content:string;
-    userImage:string;
-    date:string;
-}
 
-const NewFeed = ({username, content, userImage, date}:DATA) => {
+const NewFeed: React.FC<Post> = ({username, content, userImage, date, id}) => {
     
+  const router = useRouter()
+  const handleClick =() =>{
+    router.push(`/users/${id}`)
+  }
     return (
   
           <div className="postWrapper">
           <div className="postTop">
-            <div className="postLeft">
-            <Image  className="postProfileImg"src={userImage} alt="" width={50} height={50}/>
+            <div className="postLeft" onClick={handleClick}>
+            <Image  className="postProfileImg"src={userImage as string} alt="" width={50} height={50}/>
                 <span className="postUsername">{username}</span>
             </div>
             <div className="postRight">
