@@ -11,14 +11,14 @@ const Users = ({response}: ShowProps) => {
     return (
       <div>
         {response ? response.map((data) => {
-          return <h1>{data.username}</h1>;
+          return <h1 key={data.password}>{data.username}</h1>;
         }) : <p>Loading...</p>}
       </div>
     );
   };
   
 
-export async function getServersideProps() {
+export async function getServerSideProps() {
     const response = await axios.get('https://social-media-app-kappa.vercel.app/api/users')
     return{
         props:{ response: response.data}
