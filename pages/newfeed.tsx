@@ -12,22 +12,22 @@ const NewFeed: React.FC<Post> = ({username, content, userImage, date, id}) => {
   }
     return (
   
-          <div className="postWrapper">
+       <div className="postWrapper">
           <div className="postTop">
             <div className="postLeft" onClick={handleClick}>
-            <Image  className="postProfileImg"src={userImage as string} alt="" width={50} height={50}/>
-                <span className="postUsername">{username}</span>
+              <Image  className="postProfileImg"src={userImage as string} alt="" width={50} height={50}/>
+              <span className="postUsername">{username}</span>
             </div>
             <div className="postRight">
-                <FiMoreVertical className="myn"/>
+              <FiMoreVertical className="myn"/>
             </div>
-        </div>
-        <div className="postCenter">
-          <div className="postText">{content}</div>
-             </div>
-               <div className="postBottom">
-                <div className="postBottomLeft">{date}</div>     
-              </div>
+          </div>
+          <div className="postCenter">
+            <div className="postText">{content}</div>
+          </div>
+          <div className="postBottom">
+            <div className="postBottomLeft">{date}</div>     
+          </div>
       </div>
        
       
