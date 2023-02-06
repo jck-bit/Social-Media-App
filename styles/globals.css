@@ -93,3 +93,17 @@ form-group {
     font-weight: bold;
   }
   
+.person_content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_image{
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.person_content p{
+  margin-left: 10px;
+}

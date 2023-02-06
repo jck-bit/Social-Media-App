@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
    width:fit-content;
-   padding:50px 200px;
+   padding:50px 100px;
    display:flex;
    height:100%;
    color:white;

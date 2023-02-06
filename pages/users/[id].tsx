@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { User } from '@/utils/types'
+import Person from '@/components/Person'
 
 interface UserProps {
   user: User | null,
@@ -14,8 +15,7 @@ const User = ({ user }: UserProps) => {
     <div>
       {user ? (
         <>
-          <h1>Username: {user.username}</h1>
-          <img src={user.image} alt={user.username} />
+          <Person image={user.image} username={user.username}/>
         </>
       ) : (
         <h1>User not found</h1>
