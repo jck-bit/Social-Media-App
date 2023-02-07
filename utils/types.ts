@@ -8,10 +8,11 @@ export interface ResponseFuncs {
 }
 
 export interface User {
-    username: string,
-    password:string,
-    email:string;
-    image:string;
+    username?: string,
+    password?:string,
+    email?:string;
+    image?:string;
+    friends?:[]
 }
 
 export interface Post{

@@ -22,6 +22,7 @@ export const connect = async () => {
       email: { type: String, required: true, unique: true },
       password: { type: String, required: true },
       image: { type: String, default: "" },
+      friends:{type:Array ,default:[], select:true}
     });
 
     const PostSchema = new mongoose.Schema({

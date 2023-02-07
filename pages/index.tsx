@@ -24,9 +24,6 @@ const Home = ({ user, posts }: ShowProps) => {
       setRedirecting(true)
       router.push('auth/signin')
     }
-    if(user){
-      console.log(user.image)
-    }
   }, [user, router])
 
   return (
