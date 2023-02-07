@@ -59,12 +59,12 @@ export async function getServerSideProps(context: any) {
 
   if (session) {
     const userResponse = await axios.get(
-      `http://localhost:3000/api/users`
+      process.env.NEXTAUTH_URL as string + '/api/users'
     )
     user = userResponse.data
 
     const postsResponse = await axios.get(
-      'http://localhost:3000/api/posts'
+     process.env.NEXTAUTH_URL as string + '/api/posts'
     )
     posts = postsResponse.data
   }
