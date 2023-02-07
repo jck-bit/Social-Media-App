@@ -37,7 +37,7 @@ const Home = ({ user, posts }: ShowProps) => {
               {posts.map((post) => {
                 return (
                   <div key={post.id}>
-                    <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date} id={post.userId}/>
+                    <NewFeed username={post.username} content={post.content} userImage={post.userImage} date={post.date} id={post.userId} />
                   </div>
                 )
               })}
@@ -59,12 +59,12 @@ export async function getServerSideProps(context: any) {
 
   if (session) {
     const userResponse = await axios.get(
-      `https://social-media-app-kappa.vercel.app/api/users/${session?.user?.id}`
+      `http://localhost:3000/api/users/`
     )
     user = userResponse.data
 
     const postsResponse = await axios.get(
-      'https://social-media-app-kappa.vercel.app/api/posts'
+      'http://localhost:3000/api/posts'
     )
     posts = postsResponse.data
   }
