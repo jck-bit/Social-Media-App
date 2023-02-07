@@ -8,6 +8,8 @@ interface SignUpData {
     email:string;
     password:string;
 }
+ const DATABSE_URL_SIGNUP = process.env.NEXTAUTH_URL
+ console.log(DATABSE_URL_SIGNUP)
 
 const Signup:React.FC = () => {
     const router = useRouter()
