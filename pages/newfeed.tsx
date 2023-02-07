@@ -1,4 +1,5 @@
 import {FiMoreVertical} from 'react-icons/fi'
+import {FcLike} from 'react-icons/fc'
 import { Post } from '@/utils/types';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -26,7 +27,8 @@ const NewFeed: React.FC<Post> = ({username, content, userImage, date, id}) => {
             <div className="postText">{content}</div>
           </div>
           <div className="postBottom">
-            <div className="postBottomLeft">{date}</div>     
+            <div className="postBottomLeft">{date}</div> 
+            <FcLike/>
           </div>
       </div>
        

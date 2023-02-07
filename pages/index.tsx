@@ -8,6 +8,7 @@ import NewFeed from './newfeed'
 import Sidebar from '@/components/Sidebar'
 import { Container } from '@/styles/container.styled'
 import Share from '@/components/Share'
+import Rightbar from '@/components/Rightbar'
 
 interface ShowProps {
   user: User | null,
@@ -45,6 +46,7 @@ const Home = ({ user, posts }: ShowProps) => {
               })}
             </div>
           </div>
+          <Rightbar />
         </Container>
       ) : (
         <>{redirect ? <Loader /> : null}</>
