@@ -31,9 +31,9 @@ const handler = async (req:NextApiRequest, res:NextApiResponse) => {
 
             const newPost = new Post({
                userId,
-               username:user.username,
-               email:user.email,
-               userImage:user.image,
+               username:user?.username,
+               email:user?.email,
+               userImage:user?.image,
                image,
                content,
                likes:{},

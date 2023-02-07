@@ -36,7 +36,7 @@ const handler = async (req:NextApiRequest, res:NextApiResponse) => {
                 }
                 const { User } = await connect();
                 
-                const { username, email, password, image } = req.body;
+                const { username, email, password, image, friends } = req.body;
 
                 const user = await User.findOne({email}).lean()
                 if(user) return res.status(400).json({message:"user with that email exists"})
@@ -48,8 +48,9 @@ const handler = async (req:NextApiRequest, res:NextApiResponse) => {
                 const newUser = new User({
                     username,
                     email,
+                    friends,
                     password:passwordHash,
-                    image
+                    image,
                 });
 
                 if (!req.body.image){ 
