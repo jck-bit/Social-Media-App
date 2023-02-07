@@ -21,7 +21,7 @@ const Signup:React.FC = () => {
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
         try {
-            await axios.post('https://social-media-app-kappa.vercel.app/api/users', formData)
+            await axios.post('http://localhost:3000/api/users', formData)
             router.push('/auth/signin');
             toast.success("signup successfull",{
                 hideProgressBar: false,
