@@ -24,8 +24,9 @@ const authOptions: NextAuthOptions = {
           if(!isMatch) {
             throw new Error("Wrong Password")
           }
-          console.log({user, id:user._id, name:user.username, image:user.image})
-        return {user, id:user._id, name:user.username, image:user.image}
+          
+          console.log({user, id:user._id, name:user.username, image:user.image, friends:user.friends})
+        return {user, id:user._id, name:user.username, image:user.image, friends: user.friends}
       }
      
     }),
