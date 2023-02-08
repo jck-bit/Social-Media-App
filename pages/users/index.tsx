@@ -1,8 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-
 import { User } from '@/utils/types'
-
 interface ShowProps{
     response: User[]
 }
@@ -19,7 +17,7 @@ const Users = ({response}: ShowProps) => {
   
 
 export async function getServerSideProps() {
-    const response = await axios.get('https://social-media-app-kappa.vercel.app/api/users')
+    const response = await axios.get('http://localhost:3000/api/users')
     return{
         props:{ response: response.data}
     }

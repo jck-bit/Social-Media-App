@@ -30,7 +30,7 @@ export async function getServerSideProps(context: any) {
 
   try {
     const response = await axios.get(
-      `https://social-media-app-kappa.vercel.app/api/users/${id}`
+      `http://localhost:3000/api/users/${id}`
     )
     user = response.data
   } catch (error) {

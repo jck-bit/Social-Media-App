@@ -12,7 +12,7 @@ export interface User {
     password?:string,
     email?:string;
     image?:string;
-    friends?:[]
+    friends:[]
 }
 
 export interface Post{
