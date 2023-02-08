@@ -4,38 +4,27 @@ import { connect } from "@/utils/connection";
 
 
 const handler =async (req:NextApiRequest, res:NextApiResponse) => {
-    const catcher = (error: Error) => res.status(400).json({error})
+    const catcher:any = (error: Error) => res.status(400).json({error})
 
     const id:string = req.query.id as string
     const friendId:string = req.query.id as string
     
     const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
     const handleCase:ResponseFuncs ={
+
         GET:async (req:NextApiRequest, res:NextApiResponse) => {
             try {
 
                 const {User} = await connect()
                 const user = await User.findById(id).catch(catcher)
 
-                const friends:any = await Promise.all(
-                    user.friends.map((id:any) => user.findById(id))
-                )
-
-                if(!friends.length){
-                    return res.status(400).json({message:"You have no friends"})
-                }
-
-                const formattedFriends:any = friends.map(
-                    ({_id, username, email}:any) =>{
-                        return {_id, username,email}
-                    }
-                )
-                res.status(200).json(formattedFriends)
+                res.status(200).json(user)
 
             } catch (error) {
                 res.status(404).json({error})
             }
         },
+
         POST:async (req:NextApiRequest, res:NextApiResponse) => {
             try {
                 const {User} = await connect()
