@@ -26,7 +26,7 @@ const authOptions: NextAuthOptions = {
           }
           
           console.log({user, id:user._id, name:user.username, image:user.image, friends:user.friends})
-        return {user, id:user._id, name:user.username, image:user.image, friends: user.friends}
+        return {user, id:user._id, name:user.username, image:user.image, friends: user.friends.length}
       }
      
     }),

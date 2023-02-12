@@ -26,7 +26,7 @@ const Rightbar: React.FC = () => {
                     <span className="birthdayText">
                         {user ? (
                             <div>
-                                <h1>{`You have ${user?.friends?.length} friends`}</h1>
+                                <h1>{`You have ${user?.friends} friends`}</h1>
                             </div>
                         ) : (
                             <div>

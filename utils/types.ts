@@ -13,6 +13,7 @@ export interface User {
     email?:string;
     image?:string;
     friends:[]
+    _id:string
 }
 
 export interface Post{
